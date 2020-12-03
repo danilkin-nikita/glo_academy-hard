@@ -1,9 +1,17 @@
 'use strict';
+
+let decCache = [],
+    decCases = [2, 0, 1, 1, 1, 2];
+function decOfNum(number, titles)
+{
+    if(!decCache[number]) decCache[number] = number % 100 > 4 && number % 100 < 20 ? 2 : decCases[Math.min(number % 10, 5)];
+    return titles[decCache[number]];
+}
+
 function date_time1(){
   let current_datetime = new Date();
   let monthRu;
   let dayOfWeek;
-  let timeOfDay;
   let year = current_datetime.getFullYear();
   let day = current_datetime.getDate();
   switch (day) {
@@ -30,22 +38,11 @@ function date_time1(){
     case 10: monthRu="ноября"; break;
     case 11: monthRu="декабря"; break;
   }
-  let hours = hoursFormat(current_datetime.getHours());
+  let hours = current_datetime.getHours();
   let minutes = current_datetime.getMinutes();
   let seconds = current_datetime.getSeconds();
 
-  function hoursFormat(value) {
-    if (value == 1 || value == 21) {
-      timeOfDay = 'час';
-    } else if (value >= 2 && value <= 4 || value >= 22 && value <= 23) {
-      timeOfDay = 'часа';
-    } else {
-      timeOfDay = 'часов';
-    }
-    return value;
-  }
-
-  return 'Сегодня '+dayOfWeek+', '+ day+' '+monthRu+' '+year+', '+hours+' '+timeOfDay+' '+minutes+' минут '+seconds+' секунд';
+  return 'Сегодня '+dayOfWeek+', '+ day+' '+monthRu+' '+year+', '+hours+' '+decOfNum(hours, ['час', 'часа', 'часов'])+' '+minutes+' '+decOfNum(minutes, ['минута', 'минуты', 'минут'])+' '+seconds+' '+decOfNum(seconds, ['секунда', 'секунды', 'секунд']);
 }
 
 function zeroFirstFormat(value) {
