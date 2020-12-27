@@ -1,15 +1,6 @@
 'use strict';
 
-let btnNewColor = document.getElementById('change'),
-    color = document.getElementById('color');
+let num = 266219;
 
-let randomize = function() {
- let randomColor = '#' + (Math.random().toString(16)).substring(2,8).toUpperCase();
- btnNewColor.style.color = randomColor;
-  document.body.style.background = randomColor;
-  color.innerText = randomColor;
-};
-
-btnNewColor.addEventListener('click', randomize);
-
-randomize();
+let calculation = (num.toString().split('').reduce((res, item) => item * res, 1)) ** 3;
+console.log(calculation);
