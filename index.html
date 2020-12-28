@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RandomColor</title>
+  <title>Авторизация</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <div class="wrapper">
-   <h1 id="color"></h1>
-   <button id="change" type="button">New Color</button>
- </div>
+ <form class="authorization">
+   <h2 id="hello">Привет Аноним</h2>
+   <input type="text" id="name" placeholder="Введите имя">
+   <input type="text" id="login" placeholder="Введите логин">
+   <input type="password" id="password" placeholder="Введите пароль">
+   <button id="registration" type="button">Регистрация</button>
+   <button id="authorization" type="button">Авторизация</button>
+   <button id="exit" type="button">Выход</button>
+ </form>
 </body>
 <script src="main.js"></script>
 </html>
